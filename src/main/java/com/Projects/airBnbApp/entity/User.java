@@ -11,7 +11,6 @@ import java.util.Set;
 @Getter
 @Setter
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,4 +27,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+
 }
+

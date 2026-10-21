@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,21 +18,19 @@ import java.time.LocalDateTime;
 public class Hotel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private  long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
-    private  String name;
+    private String name;
 
-    private  String city;
-
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "json")
-    private String[] photos;
+    private String city;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "json")
-    private String[] amenities;
+    private List<String> photos;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    private List<String> amenities;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -40,6 +39,5 @@ public class Hotel {
     private LocalDateTime updatedAt;
 
     @Embedded
-    private HotelContectInfo contectInfo;
-
+    private HotelContectInfo contactInfo;
 }

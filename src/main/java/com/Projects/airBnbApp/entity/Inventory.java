@@ -10,7 +10,10 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@Table(uniqueConstraints = @UniqueConstraint( name = "unique_hotel_room_date", columnNames = {"hotel_id", "room_id", "date"}))
+@Table(uniqueConstraints = @UniqueConstraint(
+        name = "unique_hotel_room_date",
+        columnNames = {"hotel_id", "room_id", "date"}
+))
 public class Inventory {
 
     @Id
@@ -19,7 +22,7 @@ public class Inventory {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hotel_id", nullable = false)
-    private  Hotel hotel;
+    private Hotel hotel;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="room_id" , nullable = false)
@@ -42,6 +45,4 @@ public class Inventory {
 
     @Column(nullable = false)
     private Boolean closed;
-
-
 }

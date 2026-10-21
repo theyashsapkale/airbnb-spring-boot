@@ -13,7 +13,7 @@ import java.util.Set;
 public class Guest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -21,15 +21,13 @@ public class Guest {
     private User user;
 
     @Column(nullable = false)
-    private String name ;
+    private String name;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private Integer age;
 
-    @ManyToMany
-    @JoinTable
+    @ManyToMany(mappedBy = "guests")
     private Set<Booking> bookings;
-
 }
