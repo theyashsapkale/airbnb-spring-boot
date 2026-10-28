@@ -55,7 +55,6 @@ public class Booking {
     @Column(nullable = false)
     private BookingStatus bookingStatus;
 
-    // Many bookings can have many guests
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "booking_guest",

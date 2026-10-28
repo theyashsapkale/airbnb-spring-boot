@@ -27,10 +27,10 @@ public class Hotel {
     private String city;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    private List<String> photos;
+    private String[] photos;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    private List<String> amenities;
+    private String[] amenities;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -39,5 +39,14 @@ public class Hotel {
     private LocalDateTime updatedAt;
 
     @Embedded
-    private HotelContectInfo contactInfo;
+    private HotelContactInfo contactInfo;
+
+    @Column(nullable = false)
+    private Boolean active;
+
+    @ManyToOne
+    private User owner;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Room> rooms;
 }
